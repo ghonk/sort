@@ -61,6 +61,13 @@ def gotonextframe(event):
     screenadvance()
 
 #------------------------------------------------------------------------------
+#retrieve familiarity rating
+def retfamrat():
+    global familiarityrating
+    familiarityrating = var.get()
+
+
+#------------------------------------------------------------------------------
 #remove guide text when entry begins
 def eraseTxt(event):
     global clickcount
@@ -122,7 +129,7 @@ def screenadvance():
         for i in range(0,len(radbuttlist)):
             radbuttlist[i].place(x=xcent - (bX/2), y=ycent + (i * 30))
         currentscreen += 1
-        famliarityrating = v.get()
+        famliarityrating = var.get()
         global familiarityrating
     # # # # 
     # # termination screen
@@ -190,13 +197,13 @@ famoptions = [
     ("Familiar (I already knew the problem, but could not remember the solution)", "3"),
     ("Highly Familiar (I already knew the problem and its solution)", "4")
     ]
-v = StringVar()
-v.set(famoptions[0][0])
+var = StringVar()
+var.set(famoptions[0][0])
 radbuttlist = []
 bX = 0
 for i in range(0,len(famoptions)):
-    b = Radiobutton(root, text=famoptions[i][0],variable=v, 
-        value=famoptions[i][1],font="Consolas 16")
+    b = Radiobutton(root, text=famoptions[i][0],variable=var, 
+        value=famoptions[i][1],font="Consolas 16", command=retfamrat)
     if b.winfo_reqwidth() > bX:
         bX = b.winfo_reqwidth()
     radbuttlist.append(b)
