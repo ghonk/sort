@@ -9,7 +9,14 @@ from misc import *
 # --------- EXPERIMENT SETTINGS ------------
 # text properites
 experimentname='sortAlign'
-conditions=[1,2]#1=aligned, 2=unrelated
+"""
+Conditions
+1 - DisgAttack vs Unrelated
+2 - DisgAttack vs DisgProtect
+3 - Converge   vs Unrelated
+4 - Converge   vs Converge Serially 
+"""
+conditions=[1,2,3,4]
 windowcolor=[0,0,0]
 tcolor=[-1,-1,-1]
 tfont='Arial'

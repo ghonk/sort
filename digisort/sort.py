@@ -9,9 +9,14 @@ positions = [[-50, 50], [-40, 40], [-30, 30], [-20, 20], [-10, 10], [0, 0]]
 # ----------LOAD STIMULI ------------
 # load target sort cards into list 'cards'
 if condition==1:
-    targetcards = alignedcardset
+    targetcards = basecardset[0] + contrastcardset[0]
 elif condition==2:
-    targetcards = unrelatedcardset
+    targetcards = basecardset[0] + contrastcardset[1]
+elif condition==3:
+    targetcards = basecardset[1] + contrastcardset[0]
+elif condition==4:
+    targetcards = basecardset[1] + contrastcardset[2]
+
 
 cards = makecards(targetcards,win)
 shuffle(cards)
