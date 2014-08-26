@@ -22,16 +22,13 @@ cards = makecards(targetcards,win)
 shuffle(cards)
 
 print '\n -------Stimulus List --------'
-for i in cards:
-    print i
-print '\n Starting Sort Locations:'
-for i in positions:
-    print i
-
 # set position of each image
 for i in cards:
+    print i
     i[0].setPos(positions[cards.index(i)])
     i[1].setPos(positions[cards.index(i)])
+    i.append([positions[cards.index(i)]])
+    print ["starting position: ",positions[cards.index(i)]]
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #create two image bins
@@ -152,7 +149,7 @@ for i in cards:
     cardname=i[2]
 
     # determine XY coordinates
-    startposition=positions[imageid]
+    startposition=i[-1]
     finalposition=i[1].pos.tolist()
     
     # determine string category name

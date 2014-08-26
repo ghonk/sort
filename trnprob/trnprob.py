@@ -9,7 +9,7 @@ from misc import *
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # --------- EXPERIMENT SETTINGS ------------
 experimentname='transpro'
-conditions=[1]
+conditions=[1,2]
 numscreens = 3
 timer=core.Clock()
 
@@ -50,6 +50,11 @@ data.append([])
 
 from instructs import *
 
+if condition == 1:
+    transferprob = transferprobs[0] #virus
+if condition == 2:
+    transferprob = transferprobs[1] #tumor
+
 #------------------------------------------------------------------------------
 #end dialogue function
 def close_window(event):
@@ -80,15 +85,15 @@ def eraseTxt(event):
 #------------------------------------------------------------------------------
 #creates display text
 def createscrntext(displaytext, xloc, yloc, master):
+    global textobj
     temptext = StringVar()
     temptext.set(displaytext)
     textobj = screentext=Label(master,textvariable=temptext,anchor="center",
-        font="Consolas 18", wraplength=1000)    
+        font=('Times 18'), wraplength=850)    
     textobjX = textobj.winfo_reqwidth()
     textobjY = textobj.winfo_reqheight()
     textobj.place(x=xloc-(textobjX/2), y=yloc-(textobjY/2))
-    global textobj
-
+    
 #------------------------------------------------------------------------------        
 #advance screen function    
 def screenadvance():
@@ -102,13 +107,7 @@ def screenadvance():
     elif currentscreen == 1:
         insobj.place_forget()
         next_button.place(x=(x*.75)-(buttonX/2),y=y*.75)
-        transferproblem = ("Once a virus enters your body, it infects a cell "
-                           "by injecting DNA into it. This viral DNA instructs"
-                           " the cell to produce thousands of copies of the "
-                           "virus. However, no matter how many virus copies are"
-                           " made the immune system always recognizes them as "
-                           "foreign and attacks when they exit the cell. \n \n "
-                           "How can the virus leave the cell AND survive? ")
+        transferproblem = transferprob[1]
         textentry.place(x=xcent-(textentryX/2),y=ycent-5)
         textentry.insert(END,"Enter answer here")
         createscrntext(transferproblem,xcent, ycent-200, root)
@@ -117,32 +116,26 @@ def screenadvance():
     # # # #
     # # familiarity survey screen
     elif currentscreen == 2:
-        partresponse = textentry.get("0.0",END)
         global partresponse
+        global familiarityrating
+        partresponse = textentry.get("0.0",END)
         textobj.place_forget()
         textentry.place_forget()
-        famsurveytext = ("We would like to know your level of prior familiarity"
-                         " with the virus problem that you just solved. Please"
-                         " select the option below that fits best:")
         createscrntext(famsurveytext,xcent, ycent-200, root)
         # # deploy radio buttons
         for i in range(0,len(radbuttlist)):
             radbuttlist[i].place(x=xcent - (bX/2), y=ycent + (i * 30))
         currentscreen += 1
         famliarityrating = var.get()
-        global familiarityrating
     # # # # 
     # # termination screen
     elif currentscreen == 3:
-        totaltime=timer.getTime()#get sort time
         global totaltime
+        totaltime=timer.getTime()#get sort time
         next_button.place_forget()
         textobj.place_forget()
         for i in range(0,len(radbuttlist)):
             radbuttlist[i].place_forget()
-        goodbyetext = ("Thank you very much for participating in our study "
-                       "today! Please let the experimenter know that you "
-                       "have finished this experiment.")
         createscrntext(goodbyetext,xcent, ycent-200, root)
         currentscreen += 1
         root.bind("<Return>",gotonextframe)
@@ -152,6 +145,7 @@ def screenadvance():
 # # Set up display objects
 # # # #
 
+# # # #
 #create tk window
 root = tk.Tk()
 currentscreen = 1
@@ -164,49 +158,65 @@ root.bind("<Button-1>",eraseTxt)
 familiarityrating = 0
 clickcount=0
 
-
+# # # #
 #create box for response entry
 textentry=Text(root,height=10,width=60,wrap=WORD)  
 textentryX = textentry.winfo_reqwidth()
 textentryY = textentry.winfo_reqheight()
 
+# # # #
 #Screen advance button
 next_button = Button(root,text="Next",width=10,
-    height=3,font="Consolas 18",command=screenadvance)
+    height=3,font='Times 18',
+    command=screenadvance)
 buttonX = next_button.winfo_reqwidth()
 buttonY = next_button.winfo_reqheight()
 next_button.place(x=xcent-(buttonX/2),y=y*.75)
 
+# # # # 
 #Create instructions for first screen
-initinstructs = ("In this study, you will be given a question and "
-                 "asked to provide an answer. Please use the "
-                 "keyboard to type a thoughtful and thorough "
-                 "response to the question")
+initinstructs = (
+"In this study, you will be given a question and "
+"asked to provide an answer. Please use the "
+"keyboard to type a thoughtful and thorough "
+"response to the question")
 instext = StringVar()
 instext.set(initinstructs)
 insobj = screentext=Label(root,textvariable=instext,anchor="center",
-    font="Consolas 18", wraplength=1000)    
+    font='Times 18', wraplength=850)    
 insobjX = insobj.winfo_reqwidth()
 insobjY = insobj.winfo_reqheight()
 insobj.place(x=xcent-(insobjX/2), y=ycent-(insobjY/2))
 
-#Create radio button object for familiarity survey
+# # # #
+#Create familiarity survey objects
+famsurveytext = (
+"We would like to know your level of prior familiarity"
+" with the problem that you just solved. Please select"
+" the option below that fits best:")
 famoptions = [
-    ("Not Familiar (I have not seen this problem before)", "1"),
-    ("Possibly Familiar (I might have seen this problem before", "2"),
-    ("Familiar (I already knew the problem, but could not remember the solution)", "3"),
-    ("Highly Familiar (I already knew the problem and its solution)", "4")
-    ]
+("Not Familiar (I have not seen this problem before)", "1"),
+("Possibly Familiar (I might have seen this problem before", "2"),
+("Familiar (I already knew the problem, but could not remember the solution)", "3"),
+("Highly Familiar (I already knew the problem and its solution)", "4")]
 var = StringVar()
 var.set(famoptions[0][0])
 radbuttlist = []
 bX = 0
 for i in range(0,len(famoptions)):
     b = Radiobutton(root, text=famoptions[i][0],variable=var, 
-        value=famoptions[i][1],font="Consolas 16", command=retfamrat)
+        value=famoptions[i][1],font='Times 18',
+        command=retfamrat)
     if b.winfo_reqwidth() > bX:
         bX = b.winfo_reqwidth()
     radbuttlist.append(b)
+
+# # # #
+#Create exit screen vars
+goodbyetext = (
+"Thank you very much for participating in our study "
+"today! Please let the experimenter know that you "
+"have finished this experiment.")
 
 #------------------------------------------------------------------------------
 # # Run program
@@ -218,9 +228,12 @@ root.mainloop()
 # # # #
 
 print '\n ---- TASK INFORMATION: ----'
-taskdata = (['task time: ',totaltime],
-            ['transfer response: ', partresponse],
-            ['familiarity: ',familiarityrating])
+taskdata = (
+['task time: ',totaltime],
+['transfer problem: ', transferprob[0]],
+['transfer response: ', partresponse],
+['familiarity: ',familiarityrating])
+
 for thing in taskdata:
     for titleordata in thing:
         print titleordata

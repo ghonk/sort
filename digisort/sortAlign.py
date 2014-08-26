@@ -19,7 +19,7 @@ Conditions
 conditions=[1,2,3,4]
 windowcolor=[0,0,0]
 tcolor=[-1,-1,-1]
-tfont='Arial'
+tfont='Microsoft Sans Serif Regular'
 tsize=22
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
