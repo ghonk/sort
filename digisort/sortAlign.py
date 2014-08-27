@@ -1,3 +1,17 @@
+"""
+
+sortAlign
+
+TODOS - COMPARE Conditions
+      - PRINCIPLE QUERY
+
+Conditions
+1 - DisgAttack vs Unrelated
+2 - DisgAttack vs DisgProtect
+3 - Converge   vs Unrelated
+4 - Converge   vs Converge Serially 
+"""
+
 from psychopy import visual, event, core
 from random import shuffle
 from socket import gethostname
@@ -9,13 +23,6 @@ from misc import *
 # --------- EXPERIMENT SETTINGS ------------
 # text properites
 experimentname='sortAlign'
-"""
-Conditions
-1 - DisgAttack vs Unrelated
-2 - DisgAttack vs DisgProtect
-3 - Converge   vs Unrelated
-4 - Converge   vs Converge Serially 
-"""
 conditions=[1,2,3,4]
 windowcolor=[0,0,0]
 tcolor=[-1,-1,-1]
