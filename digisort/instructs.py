@@ -53,12 +53,12 @@ contrastcardset = [
 "Certain rare species of birds have the ability to mimic the sounds of the predators that live in their environment.  These birds have no natural defenses to counter the attacks of predators.  What can the birds do to protect themselves when predators are nearby?"]
 ],
 # # # # convergence aligned
-[['refuel',
-"text goes here"],
-['lobbying',
-"text goes here"],
-['soldering',
-"text goes here"]
+[['Lakes',
+"Constant-level lakes are difficult to maintain.  Dams are used to keep the water level stable in lakes.  At the 'top' of a lake, a dam can release water to raise the water level; a dam at the 'bottom' can release water if the level is high or retain water if it is low.  Keeping lakes as high as possible is important for tourism income but it also bears a high cost - if the surrounding area gets heavy rainfall the lake can flood and cause extensive property damage.  How can the level of the lake be maintained safely?"],
+['Metal',
+"A company has begun using an unconventional metal for the manufacture of its computer parts.  Electronics made from this metal are identical to more costly metals but they require sustained heat to solder (or connect) them to other pieces.  This is difficult for the company because their equipment cannot sustain the necessary heat.  An employee recently outfitted some existing equipment to generate enough heat but it overheats quickly.  What can the company do to use its existing equipment with the new metals?"],
+['Refuel',
+"It requires extensive backing from outside support teams to explore underdeveloped landscapes like those in Antarctica or deep underwater.  One particularly challenging aspect of this exploration is the need for fuel in very remote locations.  This is because thousands of gallons of fuel can be needed to run equipment but the weight of this fuel seriously limits the mobility and efficiency of any expedition.  How do people address this problem?"]
 ]]
 
 
