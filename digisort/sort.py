@@ -1,23 +1,7 @@
 print '\n --------RUNNING SORT TASK ---------'
 
-categorynames=['Shared Solutions', 'Different Solutions']
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# specify position of each image
-positions = [[-50, 50], [-40, 40], [-30, 30], [-20, 20], [-10, 10], [0, 0]]
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-# ----------LOAD STIMULI ------------
-# load target sort cards into list 'cards'
-if condition==1:
-    targetcards = basecardset[0] + contrastcardset[0]
-elif condition==2:
-    targetcards = basecardset[0] + contrastcardset[1]
-elif condition==3:
-    targetcards = basecardset[1] + contrastcardset[0]
-elif condition==4:
-    targetcards = basecardset[1] + contrastcardset[2]
-
-
+# make cards
 cards = makecards(targetcards,win)
 shuffle(cards)
 
@@ -34,6 +18,9 @@ for i in cards:
 #create two image bins
 bins=[]
 binlabel=[]
+otrlabel=[]
+otrdescr=[]
+extralabel=["BIN ONE", "BIN TWO"]
 
 bins.append(visual.Rect(win, width=400, height=760))
 bins.append(visual.Rect(win, width=400, height=760))
@@ -51,19 +38,36 @@ for i in bins:
     i.setLineColor(tcolor)
     
     #create a text label
-    binlabel.append(visual.TextStim(win,
-        text=categorynames[binID],height=tsize,font=tfont,
-        color=tcolor,pos=i.pos))
+    binlabelpos = i.pos + [0, -395]
+    binlabel.append(visual.TextStim(win,text=extradescr[binID],
+        height=tsize,font=tfont,color=tcolor,pos=binlabelpos))
+    
+    #create extra text label
+    otrlabelpos = i.pos + [0, 395]
+    otrlabel.append(visual.TextStim(win,text=extralabel[binID],
+        height=tsize,font=tfont,color=tcolor,pos=otrlabelpos))
+
+    #create extra description label
+    otrdescrpos = i.pos + [0, 365]
+    otrdescr.append(visual.TextStim(win,text=extradescr[binID],
+        height=tsize,font=tfont,color=tcolor,pos=otrdescrpos))
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   RUNNING THE SORT TASK
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-# handle instructions
+#print interface
 for i in bins:
     i.draw(win)
 for i in binlabel:
     i.draw(win)
+for i in otrlabel:
+    i.draw(win)
+for i in otrdescr:
+    i.draw(win)
+
+# handle instructions    
 instructions.draw(win)
 win.flip()
 core.wait(2)
@@ -71,13 +75,17 @@ if 'q' in event.waitKeys(keyList=['space','q']):
     core.quit()
 
 ## reset instructions
-instructions.setText('Use the mouse to move examples. Press the return key when you are finished.')
-instructions.setPos([0,(wsize[1]/2)-tsize])
+instructions.setText(sortinstructions2)
+instructions.setPos([0,(wsize[1]/2)-200])
 
 #set auto draw for cards and bins
 for i in bins:
     i.draw(win)
 for i in binlabel:
+    i.draw(win)
+for i in otrlabel:
+    i.draw(win)
+for i in otrdescr:
     i.draw(win)
 for i in cards:
     i[0].draw(win)
@@ -88,7 +96,7 @@ instructions.draw(win)
 win.flip()
 cursor.clickReset()
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - -
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # -----BEGIN SORTING
 timer.reset() #start timer
 sortinfo=findobjects(cards,bins)
@@ -119,12 +127,16 @@ while ('return' not in event.getKeys(keyList='return')) or (-1 in sortinfo):
                         j.draw()
                     for j in binlabel:
                         j.draw()
+                    for j in otrlabel:
+                        j.draw()
+                    for j in otrdescr:
+                        j.draw()
                     for j in cards:
                         j[0].draw()
                         j[1].draw()
                     win.flip()
                 
-# - - - - - - - - - - - - - - - - - - - - - - - - - -
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # -----ANALYZE AND STORE DATA            
 totaltime=timer.getTime()#get sort time
 
@@ -154,16 +166,23 @@ for i in cards:
     
     # determine string category name
     category=sortinfo[imageid]
+    i.append(category)
     if category!=-1:
         category=categorynames[category]
     else:
         category='NA'
-        
-    print [cardname + ': ', finalposition, category]
+    
     # # # SHOULD CHANGE 'SORT' TO CONDITION SPECIFIC LABEL
-    data.append(['sort',cardname,startposition,finalposition,category])
+    print [cardname + ': ', finalposition, category]
+    data.append([condition,cardname,startposition,finalposition,category])
 
-writefile(subjectfile,data,',')
+instructions.setText(princtext)
+instructions.setPos([0,0])
+instructions.draw(win)
+win.flip()
+event.waitKeys()
+
+win.flip()
 
 print '\n----final data listing -------'
 for i in data:

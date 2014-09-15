@@ -179,7 +179,7 @@ initinstructs = (
 "In this study, you will be given a question and "
 "asked to provide an answer. Please use the "
 "keyboard to type a thoughtful and thorough "
-"response to the question")
+"response to the question.")
 instext = StringVar()
 instext.set(initinstructs)
 insobj = screentext=Label(root,textvariable=instext,anchor="center",
@@ -205,8 +205,7 @@ radbuttlist = []
 bX = 0
 for i in range(0,len(famoptions)):
     b = Radiobutton(root, text=famoptions[i][0],variable=var, 
-        value=famoptions[i][1],font='Times 18',
-        command=retfamrat)
+        value=famoptions[i][1],font='Times 18',command=retfamrat)
     if b.winfo_reqwidth() > bX:
         bX = b.winfo_reqwidth()
     radbuttlist.append(b)

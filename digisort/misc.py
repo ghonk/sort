@@ -69,9 +69,48 @@ def makecards(targetcards,win):
         cardoutline = visual.Rect(win, width=380, height=225)
         cardoutline.setFillColor([1.0,1.0,1.0])
         cardoutline.setLineColor([-1,-1,-1])
-        cardtext=visual.TextStim(win, text=i[1], height=16, font='Microsoft Sans Serif Regular',
+        cardtext=visual.TextStim(win, text=i[1], height=14, font='Segoe UI',
             color=[-1,-1,-1], pos=[0,0], wrapWidth=375, name=targetcards.index(i)) 
         cardlabel = i[0]
         cardinfo = [cardoutline, cardtext, cardlabel]
         cardstims.append(cardinfo)
     return cardstims
+
+#------------------------------------------------------------------------------------
+# update widgets
+def updatewidgets(widgets):
+    for i in widgets:
+        if isinstance(i, (list, tuple)):
+            for j in i:
+                j.update()
+        else:
+            i.update()
+
+#------------------------------------------------------------------------------------
+# forget widgets
+def forgetwidgets(widgets):
+    originalposition=[]
+    for i in widgets:
+        if isinstance(i, (list, tuple)):
+            w=[] 
+            for j in i:
+                w.append(j.place_info())
+                j.place_forget()
+            originalposition.append(w)
+        else:
+            originalposition.append(i.place_info())
+            i.place_forget()
+    return originalposition
+ 
+#------------------------------------------------------------------------------------
+# remember widgets
+def rememberwidgets(widgets,info):
+    for i in widgets:
+        n=widgets.index(i)
+        if isinstance(i, (list, tuple)):
+            for j in i:
+                m=i.index(j)
+                j.place(**info[n][m])
+        else:
+             
+            i.place(**info[n])
