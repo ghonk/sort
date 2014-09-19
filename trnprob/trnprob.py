@@ -138,7 +138,7 @@ def screenadvance():
             radbuttlist[i].place_forget()
         createscrntext(goodbyetext,xcent, ycent-200, root)
         currentscreen += 1
-        root.bind("<Return>",gotonextframe)
+        root.bind("<Key>",gotonextframe)
             
 
 #------------------------------------------------------------------------------

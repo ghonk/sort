@@ -1,3 +1,6 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# # # # Instructs Doc
+
 nonalignedinstructions = (
 "You are about to read six passages that each demonstrate a different "
 " problem situation.  Some of these passages are problems that can"
@@ -7,7 +10,7 @@ nonalignedinstructions = (
 "left.  Please consider the passages carefully to make sure you are"
 " satisfied with your sort.\n\nYou will use the mouse to click and "
 "drag the passages.  When you have sorted all of the examples into the"
-" bins you can end the task by pressing the return key.\n\nPress the "
+" bins you can end the task by pressing the enter key.\n\nPress the "
 "spacebar to continue.")
 
 
@@ -21,12 +24,15 @@ alignedinstructions = (
 "carefully to make sure you are satisfied with your sort.\n\nYou"
 " will use the mouse to click and drag the passages.  When you have"
 " sorted all of the examples into the bins you can end the task by "
-"pressing the return key.\n\nPress the spacebar to continue.")
+"pressing the enter key.\n\nPress the spacebar to continue.")
+
 
 sortinstructions2 = (
-"Use the mouse to click and drag 3 passages to each bin.  Feel free to"
-" spread the passages out as you wish while you are working.\n\nYou can "
-"press the return key when you are finished.")
+"Use the mouse to click and drag 3 passages to each bin.  All "
+"passages in a bin must share a solution.  Feel free to spread the"
+" passages out as you wish while you are working.\n\nYou can press "
+"the enter key when you are finished.")
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # # # # Problem Statements
@@ -38,12 +44,12 @@ baseprobcardset = [
 ['Queen',
 "The Queen knew to be careful, so she had her food sampled by the royal taster before she would partake.  However, her enemies came to know that the queen had an insatiable appetite for a rare type of nut.  These enemies also learned that the royal baker was sympathetic to their cause.  What might the conspirators do to assassinate the queen?"]],
 # # # # contrast cards
-[['Aquarium',
-"An aquarium has decided to create a display of a famous sunken ship and its surroundings, the deep and frigid waters of the northern Atlantic Ocean.  A replica ship with plants and animals found near the shipwreck were placed in the tank but, surprisingly, the dark environment made it impossible for visitors to see the ship, the main point of the exhibit.  Putting lights inside the ship looked too artificial and pointing one powerful spotlight on the ship disrupted the feeding habits of the fish.  What could be done to address this problem and light the display?"],
-['Coup',
-"A tank corps commander and his forces remained loyal to the civilian government after it lost power in a coup d'etat.  As he planned the counterattack, the commander felt he could only succeed if he captured the military headquarters; a compound situated in the middle of a lake, reachable only by way of several, narrow pontoon bridges.  Each bridge was so unstable that only a few tanks could cross at once - a force too small to overcome the defenses.  What plan can the commander follow to successfully capture the compound?"],
+[['DDOS',
+"Internet attacks are becoming an increasingly difficult problem for organizations that operate websites.  They are often used when individuals become dissatisfied with the actions of a governmental or corporate entity.  The goal of one such attack is to overwhelm a website's ability to connect to other users by constantly requesting information.  Organizations have since learned to block internet addresses that send very high quantities of redundant requests.  How do individuals get around this defense and continue to use this method?"],
+['Commander',
+"A tank corps commander and his forces remained loyal to the civilian government after it lost power.  As he planned the counterattack to restore the government, the commander felt he could only succeed if he captured the military headquarters; a compound situated in the middle of a lake, reachable only by way of several, narrow pontoon bridges.  Each bridge was so unstable that only a few tanks could cross at once - a force too small to overcome the defenses.  What plan can the commander follow to successfully capture the compound?"],
 ['Oil Well',
-"An oil well exploded and caught fire. The result was a blazing inferno that resisted all initial efforts to extinguish the burning oil.  Elite firefighters were dispatched.  They planned to dump a huge amount of fire retardant foam on the fire. When they arrived they realized that the small hoses they brought could not shoot the foam quick enough to do any good. How can the firefighters change their plan to extinguish the blaze?"]
+"An oil well exploded and caught fire.  The result was a blazing inferno that resisted all initial efforts to extinguish the burning oil.  Elite firefighters were dispatched.  They planned to dump a huge amount of fire retardant foam on the fire.  When they arrived they realized that the small hoses they brought could not shoot the foam quick enough to do any good.  How can the firefighters change their plan to extinguish the blaze?"]
 ]]
 
 # # # # contrast cards
@@ -69,8 +75,8 @@ contprobcardset = [
 "A town has an annual festival that draws in many thousands of people to local restaurants and businesses.  This creates a challenge for the local restaurants because the large quantity of customers can quickly overwhelm the regular employees that work during the rest of the year.  This problem is further complicated by the fact that the population of the town is not large enough to sustain the many service industry employees that are needed during the peak business season.  What can the restaurant owners do to address this problem?"],
 ['Bank',
 "Banks have to keep a certain amount of money on hand for their customers.  Customers and investors can lose faith in the solvency of a bank if it fails to have enough cash to honor withdrawals, even if the bank has enough capital to cover them.  When a bank is seen as insolvent it is more likely that the bank's customers will make a 'run' on the bank or empty their accounts in exchange for cash or precious metals.  If this cycle continues, it can destroy a bank.  What can banks do to stop this cycle when their solvency is in question?"],
-['Movement',
-"Large-scale social change happens much less frequently than one might expect.  At the outset of a social movement, there may only be a handful of individuals willing to spend their time and money to promote a particular cause.  It has often been the case that the work of these individuals motivates others who would have been less likely to become involved in the movement.  How do these movements gain momentum and succeed in changing society?"]
+['PubTrans',
+"Regions with large populations are constantly faced with transportation issues.  They must provide reliable transportation because their infrastructure cannot handle the presence of a car for every citizen.  Complicating this even further, city and county governments face chronic budget shortfalls and must save money wherever they can.  If individuals have to wait for their train or bus for long periods, such as in the case of rush hour, they will be motivated to drive their cars.  How do public transportation agencies handle this problem?"]
 ]]
 # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
@@ -81,7 +87,7 @@ contprobcardset = [
 
 basesolcardset = [
 [['Mayans',
-"An ancient Mayan practice after a victorious battle was to remove and wear the distinctive clothing of their enemy. Dressed in the clothing of the deceased, they would enter enemy territory. From a distance, families and loved ones of the deceased believed their loved ones were returning home from battle; it was not until the Mayans were too close that their fatal mistake was realized."],
+"An ancient Mayan practice after a victorious battle was to remove and wear the distinctive clothing of their enemy. Dressed in the clothing of the deceased, they would enter enemy territory. From a distance, families and loved ones of the deceased believed their loved ones were entering home from battle; it was not until the Mayans were too close that their fatal mistake was realized."],
 ['Plants',
 "Carnivorous plants often emit a stench mimicking that of rotting flesh to attract their prey. Maggots are drawn towards the stench of their regular feeding ground - a dead corpse - and are then devoured by the plant. "],
 ['Queen',
@@ -129,7 +135,7 @@ princtext = (
 "Great.  Now we are going to ask you some follow up "
 "questions about the activity.  Please answer the "
 "questions as thoroughly as you can.\n\n"
-"Press the return key to begin.")
+"Press the enter key to begin.")
 
 exittext = 'Thank you for participating in this experiment.\n\
 Please inform your experimenter that you are ready\n\

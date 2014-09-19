@@ -135,7 +135,7 @@ if condition%2 == 0:
 else:
     categorynames=['shared solutions', 'different solutions']
     extradescr=["passages share a solution",
-                "passages do not share solutions"]
+                "passages do not share a solution"]
     instructions.setText(nonalignedinstructions)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

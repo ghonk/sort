@@ -34,11 +34,14 @@ def endexp(event):
 def screenadvance():
 	global group1resp
 	global group2resp
+	global firstview
 	if currentscreen == 1:
 		firstprinciplescreen()
 		group1resp = textentry.get("0.0",END)
 	elif currentscreen == 2:
-		if condition == 2 or condition == 4:		
+		if condition % 2 == 0:
+			if firstview == 1:
+				group1resp = textentry.get("0.0",END)
 			secondprinciplescreen()
 			group2resp = textentry.get("0.0",END)	
 		else:
@@ -47,6 +50,10 @@ def screenadvance():
 			finaltext.place(x=xcent-(finaltextX/2), y=400-(finaltextY/2))
 			root.bind("<Key>",endexp)
 	elif currentscreen == 3:
+		if condition % 2 != 0:
+			group1resp = textentry.get("0.0",END)
+		else:
+			group2resp = textentry.get("0.0",END)
 		forgetwidgets([textentry,topobj,topobj2,botobj,botobj2,
 			objlst2,objlst,lastobj,next_button])
 		finaltext.place(x=xcent-(finaltextX/2), y=400-(finaltextY/2))
@@ -68,8 +75,7 @@ def firstprinciplescreen():
 		originalposition = forgetwidgets([wrtmore])
 		lastobj.place(x=xcent-(lastobjX/2), y=640-(lastobjY/2))
 		currentscreen += 1
-		if condition == 1 or condition == 3:
-			group1resp = textentry.get("0.0",END)
+		if condition%2 != 0:
 			currentscreen += 1
 		
 # # # # 
@@ -93,7 +99,6 @@ def secondprinciplescreen():
 			wrtmore.place(x=xcent-(wrtmoreX/2), y=640-(wrtmoreY/2))
 			currentscreen = 2
 		else:
-			#this si stuill aproblem
 			originalposition = forgetwidgets([wrtmore])
 			lastobj.place(x=xcent-(lastobjX/2), y=640-(lastobjY/2))
 			currentscreen += 1
