@@ -7,24 +7,29 @@ from misc        import *
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 """
-                 _            _ _             
-                | |     /\   | (_)            
-  ___  ___  _ __| |_   /  \  | |_  __ _ _ __  
- / __|/ _ \| '__| __| / /\ \ | | |/ _` | '_ \ 
- \__ \ (_) | |  | |_ / ____ \| | | (_| | | | |
- |___/\___/|_|   \__/_/    \_\_|_|\__, |_| |_|
-                                   __/ |      
-                                  |___/       
+                     _            _ _             
+                    | |     /\   | (_)            
+      ___  ___  _ __| |_   /  \  | |_  __ _ _ __  
+     / __|/ _ \| '__| __| / /\ \ | | |/ _` | '_ \ 
+     \__ \ (_) | |  | |_ / ____ \| | | (_| | | | |
+     |___/\___/|_|   \__/_/    \_\_|_|\__, |_| |_|
+                                       __/ |      
+                                      |___/       
     TODOS 
           - aligned instructions sticky
           - need to restrict group sizes in sort
           - capture edits after the OK screen
+          - add character restriction on transfer problem
 
     Conditions = 
-    1 - DisgAttack vs Unrelated
-    2 - DisgAttack vs DisgProtect
-    3 - Converge   vs Unrelated
-    4 - Converge   vs Use More
+    1 - DisgAttack  vs  Unrelated   with  Problems
+    2 - DisgAttack  vs  DisgProtect with  Problems
+    3 - Converge    vs  Unrelated   with  Problems
+    4 - Converge    vs  Use More    with  Problems
+    5 - DisgAttack  vs  Unrelated   with  Solutions
+    6 - DisgAttack  vs  DisgProtect with  Solutions
+    7 - Converge    vs  Unrelated   with  Solutions
+    8 - Converge    vs  Use More    with  Solutions
 
 """
 __author__ = "Garrett and Nolie"

@@ -98,6 +98,7 @@ def createscrntext(displaytext, xloc, yloc, master):
 #advance screen function    
 def screenadvance():
     global currentscreen   
+    global wrtmorecounter
     # # # #
     # # close program after final screen
     if currentscreen > numscreens:
@@ -156,7 +157,7 @@ root.geometry("%dx%d+0+0" % (x, y))
 root.bind("<F12>", close_window)
 root.bind("<Button-1>",eraseTxt)
 familiarityrating = 0
-clickcount=0
+clickcount = 0
 
 # # # #
 #create box for response entry
@@ -176,10 +177,9 @@ next_button.place(x=xcent-(buttonX/2),y=y*.75)
 # # # # 
 #Create instructions for first screen
 initinstructs = (
-"In this study, you will be given a question and "
-"asked to provide an answer. Please use the "
-"keyboard to type a thoughtful and thorough "
-"response to the question.")
+"In this study, you will be given a question and asked to provide an answer." 
+"  Please use the keyboard to type a thoughtful and thorough response to the"
+" question.")
 instext = StringVar()
 instext.set(initinstructs)
 insobj = screentext=Label(root,textvariable=instext,anchor="center",

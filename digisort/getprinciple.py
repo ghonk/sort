@@ -68,7 +68,7 @@ def firstprinciplescreen():
 	global group1resp
 	global currentscreen
 	group1resp = textentry.get("0.0",END)
-	if len(group1resp) < 60:
+	if len(group1resp) < 25:
 		wrtmore.place(x=xcent-(wrtmoreX/2), y=640-(wrtmoreY/2))
 		currentscreen = 1
 	else:
@@ -95,7 +95,7 @@ def secondprinciplescreen():
 		firstview += 1
 	else:
 		group2resp = textentry.get("0.0",END)
-		if len(group2resp) < 60:
+		if len(group2resp) < 25:
 			wrtmore.place(x=xcent-(wrtmoreX/2), y=640-(wrtmoreY/2))
 			currentscreen = 2
 		else:

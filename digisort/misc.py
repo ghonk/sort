@@ -66,7 +66,7 @@ def findobjects(stim,bins):
 def makecards(targetcards,win):
     cardstims = []    
     for i in targetcards:
-        cardoutline = visual.Rect(win, width=380, height=225)
+        cardoutline = visual.Rect(win, width=380, height=230)
         cardoutline.setFillColor([1.0,1.0,1.0])
         cardoutline.setLineColor([-1,-1,-1])
         cardtext=visual.TextStim(win, text=i[1], height=14, font='Segoe UI',
