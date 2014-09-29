@@ -246,5 +246,6 @@ writefile(subjectfile,data,',')
 # # terminate exp
 print '\nExperiment completed'
 if gethostname() in ['klab1','klab2','klab3']:
+    copy2db(subjectfile,experimentname)
     logfile.close()
     os.system("TASKKILL /F /IM pythonw.exe")

@@ -1,5 +1,5 @@
 from psychopy import visual, event, core, gui
-import os, random, socket, numpy
+import os, random, socket, numpy, shutil
 
 #------------------------------------------------------------------------------------
 # creates folder if it doesnt exist
@@ -25,8 +25,19 @@ def writefile(filename,data,delim):
         datafile.write(currentline)
     datafile.close()  
 
+#------------------------------------------------------------------------------------    
+# copies the data file to a series of dropbox folders
+def copy2db(filename,experimentname):
+    copyfolders=[ #add your own!
+        'C:\\Users\\klab\\Dropbox\\PSYCHOPY DATA\\'+experimentname+'\\',
+        'C:\\Users\\klab\\Dropbox\\garrett\\PSYCHOPY DATA\\'+experimentname+'\\']
+
+    for i in copyfolders:
+        checkdirectory(i)
+        shutil.copy(filename,i)
+
 #------------------------------------------------------------------------------------        
-# do a dialouge and return subject info 
+# do a dialog and return subject info 
 def getsubjectinfo(experimentname,conditions,datalocation):
     ss_info=[]
     pc=socket.gethostname()
@@ -66,7 +77,7 @@ def findobjects(stim,bins):
 def makecards(targetcards,win):
     cardstims = []    
     for i in targetcards:
-        cardoutline = visual.Rect(win, width=380, height=230)
+        cardoutline = visual.Rect(win, width=380, height=250)
         cardoutline.setFillColor([1.0,1.0,1.0])
         cardoutline.setLineColor([-1,-1,-1])
         cardtext=visual.TextStim(win, text=i[1], height=14, font='Segoe UI',

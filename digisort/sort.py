@@ -22,8 +22,8 @@ otrlabel=[]
 otrdescr=[]
 extralabel=["BIN ONE", "BIN TWO"]
 
-bins.append(visual.Rect(win, width=400, height=760))
-bins.append(visual.Rect(win, width=400, height=760))
+bins.append(visual.Rect(win, width=400, height=780))
+bins.append(visual.Rect(win, width=400, height=780))
 
 for i in bins:
     binID=bins.index(i)
@@ -38,17 +38,17 @@ for i in bins:
     i.setLineColor(tcolor)
     
     #create a text label
-    binlabelpos = i.pos + [0, -395]
+    binlabelpos = i.pos + [0, -405]
     binlabel.append(visual.TextStim(win,text=extradescr[binID],
         height=tsize,font=tfont,color=tcolor,pos=binlabelpos))
     
     #create extra text label
-    otrlabelpos = i.pos + [0, 395]
+    otrlabelpos = i.pos + [0, 405]
     otrlabel.append(visual.TextStim(win,text=extralabel[binID],
         height=tsize,font=tfont,color=tcolor,pos=otrlabelpos))
 
     #create extra description label
-    otrdescrpos = i.pos + [0, 365]
+    otrdescrpos = i.pos + [0, 375]
     otrdescr.append(visual.TextStim(win,text=extradescr[binID],
         height=tsize,font=tfont,color=tcolor,pos=otrdescrpos))
 
@@ -76,7 +76,7 @@ if 'q' in event.waitKeys(keyList=['space','q']):
 
 ## reset instructions
 instructions.setText(sortinstructions2)
-instructions.setPos([0,(wsize[1]/2)-200])
+instructions.setPos([0,(wsize[1]/2)-180])
 
 #set auto draw for cards and bins
 for i in bins:

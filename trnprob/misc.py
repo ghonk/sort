@@ -1,5 +1,5 @@
 from psychopy import visual, event, core, gui
-import os, random, socket, numpy
+import os, random, socket, numpy, shutil
 
 #------------------------------------------------------------------------------------
 # creates folder if it doesnt exist
@@ -24,6 +24,17 @@ def writefile(filename,data,delim):
 ##        write current line
         datafile.write(currentline)
     datafile.close()  
+
+#------------------------------------------------------------------------------------    
+# copies the data file to a series of dropbox folders
+def copy2db(filename,experimentname):
+    copyfolders=[ #add your own!
+        'C:\\Users\\klab\\Dropbox\\PSYCHOPY DATA\\'+experimentname+'\\',
+        'C:\\Users\\klab\\Dropbox\\garrett\\PSYCHOPY DATA\\'+experimentname+'\\']
+
+    for i in copyfolders:
+        checkdirectory(i)
+        shutil.copy(filename,i)
 
 #------------------------------------------------------------------------------------        
 # do a dialouge and return subject info 

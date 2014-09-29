@@ -20,6 +20,9 @@ from misc        import *
           - need to restrict group sizes in sort
           - capture edits after the OK screen
           - add character restriction on transfer problem
+          - need participant indication that card has been put in bin
+          - need to make sure only 3 cards per bin
+
 
     Conditions = 
     1 - DisgAttack  vs  Unrelated   with  Problems
@@ -136,11 +139,13 @@ elif condition==8:
 if condition%2 == 0:
     categorynames=['share solution one', 'share solution two']
     extradescr=["passages share a solution","passages share a solution"]
+    sortinstructions2 = sortinstructions2alg
     instructions.setText(alignedinstructions)
 else:
     categorynames=['shared solutions', 'different solutions']
     extradescr=["passages share a solution",
                 "passages do not share a solution"]
+    sortinstructions2 = sortinstructions2unr
     instructions.setText(nonalignedinstructions)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -168,6 +173,7 @@ writefile(subjectfile,data,',')
 
 print '\nExperiment completed'
 if gethostname() in ['klab1','klab2','klab3']:
+   copy2db(subjectfile,experimentname)
    logfile.close()
    os.system("TASKKILL /F /IM pythonw.exe")
 

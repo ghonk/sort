@@ -69,11 +69,11 @@ def firstprinciplescreen():
 	global currentscreen
 	group1resp = textentry.get("0.0",END)
 	if len(group1resp) < 25:
-		wrtmore.place(x=xcent-(wrtmoreX/2), y=640-(wrtmoreY/2))
+		wrtmore.place(x=xcent-(wrtmoreX/2), y=675-(wrtmoreY/2))
 		currentscreen = 1
 	else:
 		originalposition = forgetwidgets([wrtmore])
-		lastobj.place(x=xcent-(lastobjX/2), y=640-(lastobjY/2))
+		lastobj.place(x=xcent-(lastobjX/2), y=680-(lastobjY/2))
 		currentscreen += 1
 		if condition%2 != 0:
 			currentscreen += 1
@@ -88,7 +88,7 @@ def secondprinciplescreen():
 		textentry.delete("0.0",END)
 		forgetwidgets([lastobj, topobj, botobj, objlst])
 		topobj2.place(x=xcent-(topobj2X/2), y=150-(topobj2Y/2))			
-		botobj2.place(x=xcent-(botobj2X/2), y=400-(botobj2Y/2))
+		botobj2.place(x=xcent-(botobj2X/2), y=425-(botobj2Y/2))
 		objlst2[0].place(x=(xcent+400)-(tempX/2), y=200)
 		objlst2[1].place(x=xcent-(tempX/2), y=200)
 		objlst2[2].place(x=(xcent-400)-(tempX/2), y=200)
@@ -96,11 +96,11 @@ def secondprinciplescreen():
 	else:
 		group2resp = textentry.get("0.0",END)
 		if len(group2resp) < 25:
-			wrtmore.place(x=xcent-(wrtmoreX/2), y=640-(wrtmoreY/2))
+			wrtmore.place(x=xcent-(wrtmoreX/2), y=675-(wrtmoreY/2))
 			currentscreen = 2
 		else:
 			originalposition = forgetwidgets([wrtmore])
-			lastobj.place(x=xcent-(lastobjX/2), y=640-(lastobjY/2))
+			lastobj.place(x=xcent-(lastobjX/2), y=680-(lastobjY/2))
 			currentscreen += 1
 
 
@@ -131,7 +131,7 @@ next_button = Button(root,text="Next",width=10,
     height=3,font='Arial 18',command=screenadvance)
 buttonX = next_button.winfo_reqwidth()
 buttonY = next_button.winfo_reqheight()
-next_button.place(x=xcent-(buttonX/2),y=y*.75)
+next_button.place(x=xcent-(buttonX/2),y=y*.80)
 
 #------------------------------------------------------------------------------
 # # # # 
@@ -153,7 +153,7 @@ botobj = screentext=Label(root,text=botinstructs,anchor="center",
     font='Arial 18', wraplength=775)    
 botobjX = botobj.winfo_reqwidth()
 botobjY = botobj.winfo_reqheight()
-botobj.place(x=xcent-(botobjX/2), y=400-(botobjY/2))
+botobj.place(x=xcent-(botobjX/2), y=425-(botobjY/2))
 
 #instruct to write more
 writemoreinstructs = (
@@ -251,7 +251,7 @@ finaltextY = finaltext.winfo_reqheight()
 textentry=Text(root,height=10,width=60,wrap=WORD)  
 textentryX = textentry.winfo_reqwidth()
 textentryY = textentry.winfo_reqheight()
-textentry.place(x=xcent-(textentryX/2),y=ycent-5)
+textentry.place(x=xcent-(textentryX/2),y=ycent+25)
 textentry.insert(END,"Enter answer here")
 
 
